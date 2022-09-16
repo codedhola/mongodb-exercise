@@ -1,10 +1,5 @@
 # MONGODB EXERCISE
 A Repo Based on The Basics Of Mongodb
-<<<<<<< HEAD
-
-
-
-=======
 ## Mongo db commands run in the shell 
 
 - #### *This shows the list of database available*
@@ -47,4 +42,3 @@ A Repo Based on The Basics Of Mongodb
   db.products.find()
  ```
   
->>>>>>> 528d40ca9ac54605a028ca79361b80873101af00
