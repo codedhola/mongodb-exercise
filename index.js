@@ -39,6 +39,15 @@ app.patch("/patch/:id", async (req, res) => {
 
 });
 
+app.delete("/delete/:id", async (req, res) => {
+    const id = req.params;
+    const data = await db.getDb().collection("clients").deleteOne({_id: ObjectId(id)});
+    res.json({
+        status: "successful",
+        message: `Object with ${id} has been deleted succefully`
+    })
+});
+
 db.Connect().then(() => {
     app.listen(3000, () => {console.log("Running script on console")});
 });
