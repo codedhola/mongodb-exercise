@@ -27,6 +27,17 @@ app.post("/post", async (req, res) => {
     res.send(accept);
 }); 
 
+app.patch("/patch/:id", async (req, res) => {
+    const id = req.params;
+    const data = await db.getDb().collection("clients").updateOne({_id: ObjectId(id)},{
+        $set : {
+            "name" : req.body.name
+        },
+        $currentDate: { lastModified: true }
+    })
+    res.send(data);
+
+});
 
 db.Connect().then(() => {
     app.listen(3000, () => {console.log("Running script on console")});
