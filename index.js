@@ -1,17 +1,17 @@
 const express = require("express");
 const mongodb = require("mongodb");
-const db = require("./model");
+const db = require("./model");  // IMPORT NECESSARY MODULES IN THE DATABASE
 const app = express();
 app.use(express.json());
-const ObjectId = mongodb.ObjectId;
+const ObjectId = mongodb.ObjectId; // GET'S THE OBJECTID DRIVER IN MONGODB
 
 app.get("/", async (req, res) => {
-    const data = await db.getDb().collection("clients").find({}).toArray();
+    const data = await db.getDb().collection("clients").find({}).toArray();  // GETS ALL FROM CLIENTS COLLECTION
     res.send(data)
 }); 
 
 app.get("/:id", async (req, res) => {
-    const data = await db.getDb().collection("clients").find({ _id: ObjectId(req.params)}).toArray();
+    const data = await db.getDb().collection("clients").find({_id: ObjectId(req.params)}).toArray();
     res.send(data); 
 });
 
