@@ -1,19 +1,18 @@
 const express = require("express");
-const { ObjectId } = require("mongodb");
+const mongodb = require("mongodb");
 const db = require("./model");
 const app = express();
 app.use(express.json());
+const ObjectId = mongodb.ObjectId;
 
 app.get("/", async (req, res) => {
-    const data = await db.getDb().collection("clients").find({}).toArray()
-    console.log(data);
+    const data = await db.getDb().collection("clients").find({}).toArray();
     res.send(data)
 }); 
 
 app.get("/:id", async (req, res) => {
     const data = await db.getDb().collection("clients").find({ _id: ObjectId(req.params)}).toArray();
-    console.log(data);
-    res.send(data);
+    res.send(data); 
 });
 
 app.post("/post", async (req, res) => {
